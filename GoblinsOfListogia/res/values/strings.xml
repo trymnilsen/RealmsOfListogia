@@ -15,7 +15,7 @@
  * limitations under the License.
 -->
 <resources>
-    <string name="app_name">GameSample</string>
+    <string name="app_name">Goblins Of Listogia</string>
     <string name="menu_title">Welcome to OUYAtron!</string>
     <string name="new_game">New Game</string>
     <string name="options">Options</string>

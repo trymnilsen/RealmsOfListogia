@@ -25,7 +25,6 @@ public abstract class OuyaGame extends Activity implements Game {
     Screen screen;
     WakeLock wakeLock;
 
-    @SuppressWarnings("deprecation")
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,16 +33,15 @@ public abstract class OuyaGame extends Activity implements Game {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        boolean isPortrait = getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
-        int frameBufferWidth = isPortrait ? 800: 1280;
-        int frameBufferHeight = isPortrait ? 1280: 800;
+        int frameBufferWidth = 1920;
+        int frameBufferHeight = 1080;
         Bitmap frameBuffer = Bitmap.createBitmap(frameBufferWidth,
                 frameBufferHeight, Config.RGB_565);
         
-        float scaleX = (float) frameBufferWidth
-                / getWindowManager().getDefaultDisplay().getWidth();
-        float scaleY = (float) frameBufferHeight
-                / getWindowManager().getDefaultDisplay().getHeight();
+//        float scaleX = (float) frameBufferWidth
+//                / getWindowManager().getDefaultDisplay().getWidth();
+//        float scaleY = (float) frameBufferHeight
+//                / getWindowManager().getDefaultDisplay().getHeight();
 
         renderView = new OuyaCanvasThreadRender(this, frameBuffer);
         graphics = new OuyaGraphics(getAssets(), frameBuffer);
