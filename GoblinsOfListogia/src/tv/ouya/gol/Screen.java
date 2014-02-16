@@ -1,5 +1,7 @@
 package tv.ouya.gol;
 
+import android.view.KeyEvent;
+
 public abstract class Screen {
     protected final Game gameInstance;
 
@@ -16,6 +18,4 @@ public abstract class Screen {
     public abstract void resume();
 
     public abstract void dispose();
-    
-    public abstract void backButton();
 }

@@ -1,5 +1,6 @@
 package tv.ouya.gol.Ouya;
 
+import tv.ouya.console.api.OuyaController;
 import tv.ouya.gol.Audio;
 import tv.ouya.gol.Game;
 import tv.ouya.gol.Graphics;
@@ -12,6 +13,8 @@ import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.os.PowerManager.WakeLock;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Window;
 import android.view.WindowManager;
 
@@ -24,11 +27,12 @@ public abstract class OuyaGame extends Activity implements Game {
 //    FileIO fileIO;
     Screen screen;
     WakeLock wakeLock;
-
+    static public Boolean pauseInput = false;
+    
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        OuyaController.init(this);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -73,6 +77,8 @@ public abstract class OuyaGame extends Activity implements Game {
         if (isFinishing())
             screen.dispose();
     }
+    
+    
 
 //    @Override
 //    public Input getInput() {
@@ -83,7 +89,7 @@ public abstract class OuyaGame extends Activity implements Game {
 //    public FileIO getFileIO() {
 //        return fileIO;
 //    }
-
+    
     @Override
     public Graphics getGraphics() {
         return graphics;
@@ -93,6 +99,7 @@ public abstract class OuyaGame extends Activity implements Game {
     public Audio getAudio() {
         return audio;
     }
+    
 
     @Override
     public void setScreen(Screen screen) {

@@ -12,9 +12,17 @@ public final class R {
     }
     public static final class drawable {
         public static final int battle_background=0x7f020000;
-        public static final int custom_cursor=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int ouya_icon=0x7f020003;
+        public static final int battle_background2=0x7f020001;
+        public static final int battle_background3=0x7f020002;
+        public static final int battle_background5=0x7f020003;
+        public static final int battle_backgroundbmp=0x7f020004;
+        public static final int custom_cursor=0x7f020005;
+        public static final int ic_launcher=0x7f020006;
+        public static final int moon=0x7f020007;
+        public static final int mountains=0x7f020008;
+        public static final int ouya_icon=0x7f020009;
+        public static final int paladin=0x7f02000a;
+        public static final int paladin_player=0x7f02000b;
     }
     public static final class id {
         public static final int back_button=0x7f06000a;
