@@ -23,6 +23,7 @@ public final class R {
         public static final int ouya_icon=0x7f020009;
         public static final int paladin=0x7f02000a;
         public static final int paladin_player=0x7f02000b;
+        public static final int slash=0x7f02000c;
     }
     public static final class id {
         public static final int back_button=0x7f06000a;

@@ -1,5 +1,6 @@
 package tv.ouya.gol.game;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 import android.app.Activity;
@@ -21,7 +22,9 @@ public class Player {
 	int playerNr;
 	Vector2 position;
 	Vector2 offset;
+	boolean isAttacking;
 	final String PlayerName;
+	ArrayList<Attack> attacks = new ArrayList<Attack>();
 	
 	public Player(int playerNr)
 	{
@@ -39,12 +42,31 @@ public class Player {
 	{
 		OuyaController c = OuyaController.getControllerByPlayer(playerNr);
         if (c != null) {
-        	float axisX = c.getAxisValue(OuyaController.AXIS_LS_X);
-        	float axisY = c.getAxisValue(OuyaController.AXIS_LS_Y);
+        	float axisLSX = c.getAxisValue(OuyaController.AXIS_LS_X);
+        	float axisLSY = c.getAxisValue(OuyaController.AXIS_LS_Y);
         	
-            if (OuyaControllUtil.isStickNotCentered(axisX,axisY)) {
+        	float axisRSX = c.getAxisValue(OuyaController.AXIS_RS_X);
+        	float axisRSY = c.getAxisValue(OuyaController.AXIS_RS_Y);
+        	
+        	//move player
+            if (OuyaControllUtil.isStickNotCentered(axisLSX,axisLSY)) {
             	//Log.d("Player","Moving Player");
-            	position.add(new Vector2((int)(axisX*3*deltatime), (int)(axisY*3*deltatime)));
+            	position.add(new Vector2((int)(axisLSX*3*deltatime), (int)(axisLSY*3*deltatime)));
+            }
+            //check for right stick attack
+            if(OuyaControllUtil.stickMag(axisRSX, axisRSY)>0.6f)
+            {
+            	if(!isAttacking)
+            	{
+            		Log.d("Player","Attacked");
+            		isAttacking=true;
+            		float attackPositionX = axisRSX * 10;
+            		float attackPositionY = axisRSY * 10;
+            	}
+            }
+            else if(isAttacking)
+            {
+            	isAttacking = false;
             }
         }
 	}

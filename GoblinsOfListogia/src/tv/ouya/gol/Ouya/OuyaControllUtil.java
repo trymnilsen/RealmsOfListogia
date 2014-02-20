@@ -3,7 +3,7 @@ package tv.ouya.gol.Ouya;
 import tv.ouya.console.api.OuyaController;
 
 public class OuyaControllUtil {
-    static private float stickMag(float axisX, float axisY) {
+    static public float stickMag(float axisX, float axisY) {
         float stickMag = (float) Math.sqrt(axisX * axisX + axisY * axisY);
         return stickMag;
     }

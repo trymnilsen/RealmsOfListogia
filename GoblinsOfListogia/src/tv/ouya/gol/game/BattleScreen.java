@@ -19,6 +19,7 @@ public class BattleScreen extends Screen {
 	public static Image backgroundImage;
 	public static Image backgroundMountains;
 	public static Image PlayerSpriteAsset;
+	public static Image attackAsset;
 	
 	ArrayList<Player> Players;
 	public BattleScreen(Game game) {
@@ -45,6 +46,13 @@ public class BattleScreen extends Screen {
             Log.e("Graphics","player Asset failed to load");
         }
         PlayerSpriteAsset = new OuyaImage(playerBitmap);
+        //Attack asset
+		Bitmap attackBitmap = BitmapFactory.decodeResource(((Activity)game).getResources(), R.drawable.slash);
+        if(attackBitmap==null)
+        {
+            Log.e("Graphics","attack Asset failed to load");
+        }
+        attackAsset = new OuyaImage(attackBitmap);
 		// TODO Auto-generated constructor stub
 	}
 
